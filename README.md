@@ -1,6 +1,6 @@
 # jupyterlab_aggrid
 
-A JupyterLab extension for rendering .dot files.
+A JupyterLab extension for rendering .csv files as aggrid instances.
 
 ## Overview
 
@@ -60,7 +60,7 @@ jupyter lab build --minimize=False
 
 In folder [/test](./test):
 
-- download sample dot files
+- download sample csv files
 - run `jupyter lab`
 
 ### Uninstall
