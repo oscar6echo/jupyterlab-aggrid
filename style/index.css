@@ -1,0 +1,17 @@
+.mimerenderer-aggrid {
+  overflow: auto;
+}
+
+.mimerenderer-aggrid .wrapper-viz,
+.mimerenderer-aggrid .wrapper-viz #viz {
+  width: 100%;
+  height: 100%;
+}
+
+[data-jp-theme-light='false'] .mimerenderer-aggrid-icon {
+  background-image: url(./grid-dark.svg);
+}
+
+[data-jp-theme-light='true'] .mimerenderer-aggrid-icon {
+  background-image: url(./grid-light.svg);
+}

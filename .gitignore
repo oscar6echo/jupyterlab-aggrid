@@ -1,0 +1,13 @@
+*.bundle.*
+lib/
+node_modules/
+*.egg-info/
+.ipynb_checkpoints
+*.tsbuildinfo
+dist/
+
+.py[cod]
+__pycache__/
+.ipynb_checkpoints/
+
+.vscode
