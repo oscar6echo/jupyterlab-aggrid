@@ -31,6 +31,7 @@ import { StatusBarModule } from '@ag-grid-enterprise/status-bar';
 
 import '@ag-grid-community/core/dist/styles/ag-grid.css';
 import '@ag-grid-community/core/dist/styles/ag-theme-balham.css';
+import '@ag-grid-community/core/dist/styles/ag-theme-balham-dark.css';
 
 ModuleRegistry.registerModules([
   ClientSideRowModelModule,
@@ -112,8 +113,8 @@ export class AggridWidget extends Widget implements IRenderMime.IRenderer {
 
     this._vizGrid = root.append('div');
     this._vizGrid.attr('id', 'viz');
-    this._vizGrid.attr('class', 'ag-theme-balham');
-    // this._vizGrid.attr('class', 'ag-theme-balham-dark');
+    // this._vizGrid.attr('class', 'ag-theme-balham');
+    this._vizGrid.attr('class', 'ag-theme-balham-dark');
 
     const _data_json = d3Parser.csvParse(data, d3Parser.autoType);
     console.log(_data_json);
@@ -206,7 +207,7 @@ export const rendererFactory: IRenderMime.IRendererFactory = {
 const extension: IRenderMime.IExtension = {
   id: 'jupyterlab-aggrid:plugin',
   rendererFactory,
-  rank: 10,
+  rank: 1,
   dataType: 'string',
   fileTypes: [
     {
