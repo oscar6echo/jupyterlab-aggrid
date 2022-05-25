@@ -52,6 +52,7 @@ LicenseManager.setLicenseKey('__AGGRID_LICENCE_KEY__');
 
 const MIME_TYPE = 'text/csv';
 const CLASS_NAME = 'mimerenderer-aggrid';
+const THEME_MODE_BODY_ATTRIBUTE = 'data-jp-theme-light';
 
 /**
  * widget for rendering .dot.
@@ -63,6 +64,7 @@ export class AggridWidget extends Widget implements IRenderMime.IRenderer {
   private _wrapperViz: i.d3SelectDiv;
   private _vizGrid: i.d3SelectDiv;
   private _gridOptions: GridOptions;
+  private _isThemeDark: boolean;
 
   /**
    * Construct a new output widget.
@@ -79,6 +81,9 @@ export class AggridWidget extends Widget implements IRenderMime.IRenderer {
     const root = d3.select(this.node);
 
     this._wrapperViz = root.append('div').attr('class', 'wrapper-viz');
+
+    this._isThemeDark =
+      document.body.getAttribute(THEME_MODE_BODY_ATTRIBUTE) === 'false';
   }
 
   /**
@@ -97,7 +102,6 @@ export class AggridWidget extends Widget implements IRenderMime.IRenderer {
   async drawAggrid({ data, reset }: i.IParamsDrawAggrid): Promise<void> {
     console.log('--- start AggridWidget drawAggrid');
 
-    //   const root = d3.select(this.node);
     const root = this._wrapperViz;
 
     const vizExists = !root.select('#viz').empty();
@@ -113,8 +117,12 @@ export class AggridWidget extends Widget implements IRenderMime.IRenderer {
 
     this._vizGrid = root.append('div');
     this._vizGrid.attr('id', 'viz');
-    // this._vizGrid.attr('class', 'ag-theme-balham');
-    this._vizGrid.attr('class', 'ag-theme-balham-dark');
+
+    if (this._isThemeDark) {
+      this._vizGrid.attr('class', 'ag-theme-balham-dark');
+    } else {
+      this._vizGrid.attr('class', 'ag-theme-balham');
+    }
 
     const _data_json = d3Parser.csvParse(data, d3Parser.autoType);
     console.log(_data_json);
@@ -207,7 +215,7 @@ export const rendererFactory: IRenderMime.IRendererFactory = {
 const extension: IRenderMime.IExtension = {
   id: 'jupyterlab-aggrid:plugin',
   rendererFactory,
-  rank: 1,
+  rank: 100,
   dataType: 'string',
   fileTypes: [
     {
@@ -219,7 +227,7 @@ const extension: IRenderMime.IExtension = {
     },
   ],
   documentWidgetFactoryOptions: {
-    name: 'aggrid viewer',
+    name: 'Ag Grid',
     primaryFileType: 'csv',
     fileTypes: ['csv'],
     defaultFor: ['csv'],
