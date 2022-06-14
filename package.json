@@ -1,15 +1,15 @@
 {
-    "name": "jupyterlab_aggrid",
+    "name": "@oscar6echo/jupyterlab_aggrid",
     "version": "0.1.0",
-    "description": "A JupyterLab extension for rendering .dot files.",
+    "description": "A JupyterLab extension for rendering .csv files with aggrid js lib.",
     "keywords": [
         "jupyter",
         "jupyterlab",
         "jupyterlab-extension"
     ],
-    "homepage": "https://github.com/oscar6echo/jupyterlab_aggrid",
+    "homepage": "https://github.com/oscar6echo/jupyterlab-aggrid",
     "bugs": {
-        "url": "https://github.com/oscar6echo/jupyterlab_aggrid/issues"
+        "url": "https://github.com/oscar6echo/jupyterlab-aggrid/issues"
     },
     "license": "BSD-3-Clause",
     "author": {
@@ -25,7 +25,7 @@
     "style": "style/index.css",
     "repository": {
         "type": "git",
-        "url": "https://github.com/oscar6echo/jupyterlab_aggrid.git"
+        "url": "https://github.com/oscar6echo/jupyterlab-aggrid.git"
     },
     "scripts": {
         "build": "jlpm run build:lib && jlpm run build:labextension:dev",
