@@ -15,7 +15,12 @@ This jupyterlab extension allows to display a .csv file as an [aggrid](https://w
 ## Install
 
 ```bash
+# if/when published
 pip install jupyterlab_aggrid
+
+# else git clone repo and install locally from repo root folder
+jlpm run build:prod
+pip install .
 ```
 
 ## Contributing

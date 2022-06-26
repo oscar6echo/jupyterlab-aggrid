@@ -68,7 +68,7 @@ setup_args = dict(
 
 
 try:
-    from jupyter_packaging import get_data_files, npm_builder, wrap_installers
+    from jupyter_packaging import npm_builder, wrap_installers, get_data_files
 
     builder = npm_builder(HERE, build_cmd="build", npm=["jlpm"])
     setup_args["cmdclass"] = wrap_installers(
@@ -85,7 +85,6 @@ except ImportError as e:
     )
     if not ("--name" in sys.argv or "--version" in sys.argv):
         raise e
-
 
 if __name__ == "__main__":
     setuptools.setup(**setup_args)
